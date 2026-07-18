@@ -8,14 +8,13 @@ import AIStudyAssistant from "../components/dashboard/AIStudyAssistant";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen">
+
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
 
         <WelcomeBanner />
-
-        {/* Summary Cards */}
 
         <section className="mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -41,8 +40,6 @@ export default function Dashboard() {
           </div>
         </section>
 
-        {/* Main Dashboard */}
-
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           <div className="space-y-6">
@@ -58,6 +55,7 @@ export default function Dashboard() {
         </section>
 
       </main>
+
     </div>
   );
 }
