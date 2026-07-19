@@ -1,14 +1,17 @@
+import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./components/layout/Sidebar";
-import Dashboard from "./pages/Dashboard";
+import AppRoutes from "./routes/AppRoutes";
 
 export default function App() {
   return (
-    <div className="flex bg-slate-100">
-      <Sidebar />
+    <BrowserRouter>
+      <div className="flex min-h-screen bg-slate-100">
+        <Sidebar />
 
-      <div className="flex-1">
-        <Dashboard />
+        <div className="flex-1">
+          <AppRoutes />
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }

@@ -1,67 +1,82 @@
-const schedule = [
+import { Clock, MapPin } from "lucide-react";
+
+const classes = [
   {
     time: "08:30",
     subject: "Mathematics",
-    room: "Room 203",
+    teacher: "Mr. Sharma",
+    room: "Room 204",
+    status: "Now",
   },
   {
-    time: "09:20",
+    time: "10:00",
     subject: "Physics",
-    room: "Room 305",
-  },
-  {
-    time: "10:10",
-    subject: "English",
-    room: "Room 101",
+    teacher: "Mrs. Sen",
+    room: "Lab 2",
+    status: "Next",
   },
   {
     time: "11:30",
+    subject: "English",
+    teacher: "Ms. Roy",
+    room: "Room 108",
+    status: "",
+  },
+  {
+    time: "02:00",
     subject: "Computer Science",
-    room: "Lab 2",
+    teacher: "Mr. Das",
+    room: "Computer Lab",
+    status: "",
   },
 ];
 
 export default function ScheduleCard() {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold">Today's Classes</h2>
 
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold">
-          Today's Schedule
-        </h2>
-
-        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-          4 Classes
+        <span className="text-sm text-blue-600 font-medium">
+          View All
         </span>
       </div>
 
-      <div className="space-y-3">
-        {schedule.map((lesson) => (
+      <div className="space-y-5">
+        {classes.map((item) => (
           <div
-            key={lesson.time}
-            className="flex items-center gap-4 rounded-xl border border-gray-100 p-4 hover:border-blue-300 hover:bg-blue-50 transition-all"
+            key={item.time}
+            className="flex items-start gap-4 border-l-4 border-blue-500 pl-4"
           >
-            <div className="w-12 text-center">
-              <p className="font-bold text-blue-600">
-                {lesson.time}
-              </p>
+            <div className="min-w-[70px]">
+              <p className="font-bold">{item.time}</p>
+
+              {item.status && (
+                <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                  {item.status}
+                </span>
+              )}
             </div>
 
-            <div className="w-px self-stretch bg-gray-200"></div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg">
+                {item.subject}
+              </h3>
 
-            <div>
-              <p className="font-semibold text-gray-900">
-                {lesson.subject}
+              <p className="text-gray-500">
+                {item.teacher}
               </p>
 
-              <p className="text-sm text-gray-500">
-                {lesson.room}
-              </p>
+              <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                <MapPin size={15} />
+                {item.room}
+              </div>
             </div>
+
+            <Clock size={18} className="text-gray-400" />
           </div>
         ))}
       </div>
-
     </div>
   );
 }

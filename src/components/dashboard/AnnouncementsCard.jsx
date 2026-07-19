@@ -1,51 +1,60 @@
-const announcements = [
+import {
+  FileText,
+  CalendarPlus,
+  MessageCircle,
+  Bot,
+} from "lucide-react";
+
+const actions = [
   {
-    title: "Science Exhibition",
-    details: "Friday, 24 July • School Auditorium",
+    icon: <FileText size={22} />,
+    title: "Assignments",
+    description: "View all homework",
   },
   {
-    title: "Parent-Teacher Meeting",
-    details: "Wednesday, 29 July • 10:00 AM",
+    icon: <CalendarPlus size={22} />,
+    title: "Attendance",
+    description: "Check today's attendance",
   },
   {
-    title: "Library Notice",
-    details: "Library closes at 4:00 PM today.",
+    icon: <MessageCircle size={22} />,
+    title: "Messages",
+    description: "Open inbox",
+  },
+  {
+    icon: <Bot size={22} />,
+    title: "AI Assistant",
+    description: "Ask anything",
   },
 ];
 
 export default function AnnouncementsCard() {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <h2 className="text-xl font-bold mb-6">
+        Quick Actions
+      </h2>
 
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold">
-          Announcements
-        </h2>
-
-        <span className="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm font-semibold">
-          3 New
-        </span>
-      </div>
-
-      <div className="space-y-3">
-
-        {announcements.map((announcement, index) => (
-          <div
-            key={index}
-            className="rounded-xl border border-gray-100 p-4 hover:border-amber-300 hover:bg-amber-50 transition-all"
+      <div className="grid grid-cols-2 gap-4">
+        {actions.map((action) => (
+          <button
+            key={action.title}
+            className="border border-gray-200 rounded-xl p-5 text-left hover:shadow-md hover:-translate-y-1 transition-all duration-300"
           >
-            <p className="font-semibold text-gray-900">
-              {announcement.title}
-            </p>
+            <div className="text-blue-600 mb-3">
+              {action.icon}
+            </div>
+
+            <h3 className="font-semibold">
+              {action.title}
+            </h3>
 
             <p className="text-sm text-gray-500 mt-1">
-              {announcement.details}
+              {action.description}
             </p>
-          </div>
+          </button>
         ))}
-
       </div>
-
     </div>
   );
 }
